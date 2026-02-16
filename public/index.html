@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotre Room Online</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🎰 Lotre Room Online</h1>
+        <div id="userInfo"></div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Tebakan Anda</h2>
+            <div id="mainNumber" class="display-box">--</div>
+            <div id="userStatus" class="status">Siapkan Tebakan Anda!</div>
+            
+            <input type="number" id="userGuess" placeholder="Angka 1-100" min="1" max="100">
+            <button onclick="lockAnswer()" id="btnLock">🔒 Kunci Jawaban</button>
+        </div>
+
+        <div class="card">
+            <h3>📊 Statistik Anda</h3>
+            <p>Total: <strong id="totalGames">0</strong> | Menang: <strong id="totalWins">0</strong> | Rate: <strong id="winRate">0%</strong></p>
+        </div>
+
+        <div id="adminPanel" class="card admin" style="display:none;">
+            <h3>⚙️ Admin Panel</h3>
+            <input type="number" id="targetNumber" placeholder="Angka Hasil (1-100)">
+            <button onclick="triggerSpin()">🎡 SPIN</button>
+            <button onclick="resetGame()">🔄 RESET</button>
+        </div>
+
+        <div class="card">
+            <h3>🏆 Leaderboard</h3>
+            <div id="leaderboard"></div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <button onclick="loginGoogle()">Login dengan Google</button>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+  </html>
